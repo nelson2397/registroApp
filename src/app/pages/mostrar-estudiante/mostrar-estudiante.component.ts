@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RegistrarService } from 'src/app/services/registrar.service';
 
 @Component({
   selector: 'app-mostrar-estudiante',
@@ -8,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MostrarEstudianteComponent implements OnInit {
 
-  constructor() { }
+  usuario: Observable<any>
+  constructor(private validar: RegistrarService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.usuario = this.validar.getUsuario();  
   }
 
 }

@@ -4,12 +4,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Login } from '../interfaces/form-login';
 import Swal from 'sweetalert2';
 import { CrearUsuario } from '../interfaces/form-crear-usuario';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrarService {
   bandera: boolean;
+  estudiantes: Observable<any>;
+  data;
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) { }
 
   velidarlogin(data: Login){
@@ -35,5 +39,17 @@ export class RegistrarService {
     }).catch(() => {
       Swal.fire('Error al crear el usuario', '', 'error') 
     });
+  }
+  getEstudiantes(){
+    this.estudiantes = this.firestore.collection('correos').snapshotChanges().pipe(map (action => {
+      return action.map(a => {
+        this.data = a.payload.doc.data();
+        return this.data;
+      })
+    }))
+    return this.estudiantes;
+  }
+  getTraerData(email: string){
+    return this.firestore.doc(`${email}/books`).get();
   }
 }

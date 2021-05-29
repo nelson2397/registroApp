@@ -41,10 +41,20 @@ export class NavbarComponent implements OnInit {
       return;
     }
 
+    if(this.formulario.get('email').value !== "claudia.benavidesvargas@gmail.com" && this.formulario.get('password').value !== "1107522606"){
+      Swal.fire('Usuario o contraseña no permitidos', '', 'error');
+      return;
+    }
+
     this.registrar.velidarlogin(this.formulario.value).then(() => {
       this.recargarData();
       this.formulario.reset();
-    }).catch(() => {
+    }).catch((error) => {
+      console.log(error.code);
+      if(error.code == "auth/too-many-requests"){
+        Swal.fire('Su cuenta ha sido bloqueada', 'Ponte en contacto con soporte técnico', 'warning');
+        return;
+      }
       Swal.fire('Usuario o contraseña incorrectos', '', 'error');
       this.formulario.get('password').setValue('');
     })

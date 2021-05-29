@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
    firebaseConfig: {
-    apiKey: "AIzaSyBqvQajj0mq4yDwVHgpyn6i57j06jwZB10",
-    authDomain: "interactivebook-d25b0.firebaseapp.com",
-    projectId: "interactivebook-d25b0",
-    storageBucket: "interactivebook-d25b0.appspot.com",
-    messagingSenderId: "646095005427",
-    appId: "1:646095005427:web:49487e6e9d3db0c43bb986",
-    measurementId: "G-70FJ0J7KXP"
+    apiKey: "AIzaSyBaKsvCNztNiHMwVC02BAHBdU7uHs5X-8A",
+    authDomain: "interactivebook-62574.firebaseapp.com",
+    databaseURL: "https://interactivebook-62574-default-rtdb.firebaseio.com",
+    projectId: "interactivebook-62574",
+    storageBucket: "interactivebook-62574.appspot.com",
+    messagingSenderId: "691957195353",
+    appId: "1:691957195353:web:3e3e4fdf46d177ed134748",
+    measurementId: "G-9K8WK7ZPKY"
   }
 };
 

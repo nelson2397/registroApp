@@ -1,0 +1,43 @@
+<div  *ngIf="usuario | async; else jumbotron" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table mat-table [dataSource]="estudiantesTabla" style="width: 100%;">
+                <ng-container matColumnDef="nombre_completo">
+                    <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+                    <td (click)="traerData(estudiante.email)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.nombre +' '+ estudiante.apellido}}</td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>Correo Eléctronico</th>
+                    <td (click)="traerData(estudiante.email)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.email}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="estudiantesColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: estudiantesColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table mat-table [dataSource]="booksTabla" style="width: 100%;">
+                <ng-container matColumnDef="book1">
+                    <th mat-header-cell *matHeaderCellDef>Book 1</th>
+                    <td mat-cell *matCellDef="let book">{{book.book1}}</td>
+                </ng-container>
+                <ng-container matColumnDef="book2">
+                    <th mat-header-cell *matHeaderCellDef>Book 2</th>
+                    <td mat-cell *matCellDef="let book">{{book.book2}}</td>
+                </ng-container>
+                <ng-container matColumnDef="book3">
+                    <th mat-header-cell *matHeaderCellDef>Book 3</th>
+                    <td mat-cell *matCellDef="let book">{{book.book3}}</td>
+                </ng-container>
+                <ng-container matColumnDef="bookA1">
+                    <th mat-header-cell *matHeaderCellDef>Book A1</th>
+                    <td mat-cell *matCellDef="let book">{{book.bookA1}}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="booksColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: booksColumns"></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<ng-template #jumbotron>
+    <app-jumbotron></app-jumbotron>
+</ng-template>
