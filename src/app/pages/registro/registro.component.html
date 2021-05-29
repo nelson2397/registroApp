@@ -1,31 +1,5 @@
     <div *ngIf="usuario | async; else jumbotron">
-        <div class="text-center"><h1>Creación de Estudiante</h1></div>
-        <form [formGroup]="formulario" class="col-md-6 offset-md-3 border p-5" (ngSubmit)="crearUsuario()">
-            <div class="form-group">
-                <input type="email" formControlName="email" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="password" formControlName="password" placeholder="Contraseña" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="number" formControlName="telefono" placeholder="Telefóno" class="form-control">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" formControlName="book1" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Book 1</label>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" formControlName="book2" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Book 2</label>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" formControlName="book3" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Book 3</label>
-              </div>
-        <div class="text-right">
-            <button type="submit" class="btn btn-primary">Crear Estudiante</button>
-        </div>
-        </form>
+        <app-registro-component></app-registro-component>
     </div>
 <ng-template #jumbotron>
     <app-jumbotron></app-jumbotron>

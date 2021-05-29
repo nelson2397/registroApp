@@ -1,4 +1,4 @@
-import { Injectable, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Login } from '../interfaces/form-login';
@@ -13,7 +13,7 @@ export class RegistrarService {
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) { }
 
   velidarlogin(data: Login){
-          return this.auth.signInWithEmailAndPassword(data.email, data.password);  ;
+          return this.auth.signInWithEmailAndPassword(data.email, data.password);
   }
 
   logOut(){
@@ -25,13 +25,15 @@ export class RegistrarService {
   }
 
   crearUsuario(data: CrearUsuario){
-    this.auth.createUserWithEmailAndPassword(data.email, data.password).then(() => {
+    this.auth.createUserWithEmailAndPassword(data.email, data.password).then(resp => {
+      
       Swal.fire('Usuario creado correctamente', '', 'success');
+    
       this.firestore.doc(`${data.email}/books`).set(data).catch(() => {
         Swal.fire('El registro de libros falló', '', 'error');
       });
     }).catch(() => {
-      Swal.fire('Error al crear el usuario', '', 'error')
+      Swal.fire('Error al crear el usuario', '', 'error') 
     });
   }
 }

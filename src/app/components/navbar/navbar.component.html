@@ -8,10 +8,10 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item" routerLinkActive="active">
           <a *ngIf="usuario | async" class="nav-link" routerLink="/registro">Registro Estudiante</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item" routerLinkActive="active">
           <a *ngIf="usuario | async" class="nav-link" routerLink="/estudiantes">Mostrar Estudiantes</a>
         </li>
         <!-- <li class="nav-item">

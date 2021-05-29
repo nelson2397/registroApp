@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegistroComponent } from './registro/registro.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,13 +16,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,
     RegistroComponent,
     JumbotronComponent,
-    ReactiveFormsModule
   ]
 })
 export class ComponentsModule { }
