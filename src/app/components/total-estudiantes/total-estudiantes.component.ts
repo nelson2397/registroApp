@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { RegistrarService } from 'src/app/services/registrar.service';
+import {MatPaginator} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,6 +16,7 @@ export class TotalEstudiantesComponent implements OnInit {
   usuario: Observable<any>
   estudiantesTabla: MatTableDataSource<any>;
   booksTabla : MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   estudiantesColumns: string[] = ['nombre_completo', 'email'];
   booksColumns: string[] = ['books'];
   booksArr: any[] = [];
@@ -25,9 +27,16 @@ export class TotalEstudiantesComponent implements OnInit {
     // this.correos = this.validar.getEstudiantes();
     this.validar.getEstudiantes().subscribe(resp => {
       this.estudiantesTabla = new MatTableDataSource<any>(resp);
+      this.estudiantesTabla.paginator = this.paginator;
       console.log(this.estudiantesTabla.data);
     }); 
 }
+
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.estudiantesTabla.filter = filterValue.trim().toLowerCase();
+}
+
 traerData(email: string, nombre: string, apellido: string, id: string){
   this.validar.getTraerData(email).subscribe(resp => {
     

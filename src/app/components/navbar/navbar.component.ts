@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
       return;
     }
 
-    if(this.formulario.get('email').value !== "claudia.benavidesvargas@gmail.com" && this.formulario.get('password').value !== "1107522606"){
+    if(this.formulario.get('email').value !== "aes.estadio@gmail.com" || this.formulario.get('password').value !== "aes_instituto"){
       Swal.fire('Usuario o contraseña no permitidos', '', 'error');
       return;
     }

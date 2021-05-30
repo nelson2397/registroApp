@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TotalEstudiantesComponent } from './total-estudiantes/total-estudiantes.component';
 import { MaterialsModule } from '../materials/materials/materials.module';
+import { AddEstudianteComponent } from './add-estudiante/add-estudiante.component';
 
 
 
@@ -16,6 +17,7 @@ import { MaterialsModule } from '../materials/materials/materials.module';
     RegistroComponent,
     JumbotronComponent,
     TotalEstudiantesComponent,
+    AddEstudianteComponent,
   ],
   imports: [
     CommonModule,
