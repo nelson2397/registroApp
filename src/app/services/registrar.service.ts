@@ -28,14 +28,33 @@ export class RegistrarService {
     return this.auth.user;
   }
 
-  crearUsuario(data: CrearUsuario){
+  restablecerContraseña(email: string){
+    return this.auth.sendPasswordResetEmail(email);
+  }
+
+  guardarDatosPersonales(data: any, id: string){
+    const fullName ={
+      nombre: data.nombre,
+      apellido: data.apellido,
+      email: data.email
+    };
+    console.log(fullName);
+    return this.firestore.doc(`correos/${id}`).set(fullName);
+  }
+
+  crearUsuario(data: CrearUsuario, id: string){
     this.auth.createUserWithEmailAndPassword(data.email, data.password).then(resp => {
       
       Swal.fire('Usuario creado correctamente', '', 'success');
-    
-      this.firestore.doc(`${data.email}/books`).set(data).catch(() => {
-        Swal.fire('El registro de libros falló', '', 'error');
-      });
+      console.log(id);
+      this.guardarDatosPersonales(data, id);
+      delete data.nombre;
+      delete data.apellido;
+      setTimeout(() => {
+        this.enviarData(data).catch(() => {
+          Swal.fire('El registro de libros falló', '', 'error');
+        });
+      }, 1500);
     }).catch(() => {
       Swal.fire('Error al crear el usuario', '', 'error') 
     });
@@ -44,6 +63,7 @@ export class RegistrarService {
     this.estudiantes = this.firestore.collection('correos').snapshotChanges().pipe(map (action => {
       return action.map(a => {
         this.data = a.payload.doc.data();
+        this.data.id = a.payload.doc.id;
         return this.data;
       })
     }))
@@ -51,5 +71,8 @@ export class RegistrarService {
   }
   getTraerData(email: string){
     return this.firestore.doc(`${email}/books`).get();
+  }
+  enviarData(books: any){
+    return this.firestore.doc(`${books.email}/books`).set(books);
   }
 }

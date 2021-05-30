@@ -1,1 +1,6 @@
-<app-total-estudiantes></app-total-estudiantes>
+<div *ngIf="usuario | async; else jumbotron">
+    <app-total-estudiantes></app-total-estudiantes>
+</div>
+<ng-template #jumbotron>
+<app-jumbotron></app-jumbotron>
+</ng-template>
