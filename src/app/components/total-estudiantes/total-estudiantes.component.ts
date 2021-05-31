@@ -28,7 +28,7 @@ export class TotalEstudiantesComponent implements OnInit {
     this.validar.getEstudiantes().subscribe(resp => {
       this.estudiantesTabla = new MatTableDataSource<any>(resp);
       this.estudiantesTabla.paginator = this.paginator;
-      console.log(this.estudiantesTabla.data);
+      // console.log(this.estudiantesTabla.data);
     }); 
 }
 
@@ -67,8 +67,8 @@ restablecer(email: string){
   })
 }
 
-enviarData(books: any, nombre: string, apellido: string){
-  console.log(this.booksArr);
+enviarData(books: any, nombre: string, apellido: string, id: string){
+  // console.log(this.booksArr);
   const data = {
     nombre,
     apellido,
@@ -76,7 +76,7 @@ enviarData(books: any, nombre: string, apellido: string){
   }
   Swal.fire('Actualizando', 'Espere un momento', 'info');
   Swal.showLoading();
-  this.validar.guardarDatosPersonales(data, books.id);
+  this.validar.guardarDatosPersonales(data, id);
   this.validar.enviarData(books).then(resp => {
     Swal.fire('Actualizado correctamente', '', 'success');
   })

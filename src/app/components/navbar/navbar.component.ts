@@ -50,7 +50,7 @@ export class NavbarComponent implements OnInit {
       this.recargarData();
       this.formulario.reset();
     }).catch((error) => {
-      console.log(error.code);
+      // console.log(error.code);
       if(error.code == "auth/too-many-requests"){
         Swal.fire('Su cuenta ha sido bloqueada', 'Ponte en contacto con soporte técnico', 'warning');
         return;

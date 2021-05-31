@@ -38,7 +38,7 @@ export class RegistrarService {
       apellido: data.apellido,
       email: data.email
     };
-    console.log(fullName);
+    // console.log(fullName);
     return this.firestore.doc(`correos/${id}`).set(fullName);
   }
 
@@ -46,7 +46,7 @@ export class RegistrarService {
     this.auth.createUserWithEmailAndPassword(data.email, data.password).then(resp => {
       
       Swal.fire('Usuario creado correctamente', '', 'success');
-      console.log(id);
+      // console.log(id);
       this.guardarDatosPersonales(data, id);
       delete data.nombre;
       delete data.apellido;

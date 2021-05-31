@@ -27,7 +27,15 @@ export class RegistroComponent implements OnInit {
       book1: [false],
       book2: [false],
       book3: [false],
-      bookA1: [false]
+      bookA1: [false],
+      book4: [false],
+      book5: [false],
+      book6: [false],
+      bookA2: [false],
+      book7: [false],
+      book8: [false],
+      book9: [false],
+      bookB1: [false]
     })
   }
 
@@ -48,6 +56,30 @@ export class RegistroComponent implements OnInit {
     }
     if(!this.formulario.get('bookA1').value){
       this.formulario.controls['bookA1'].setValue(false);
+    }
+    if(!this.formulario.get('book4').value){
+      this.formulario.controls['book4'].setValue(false);
+    }
+    if(!this.formulario.get('book5').value){
+      this.formulario.controls['book5'].setValue(false);
+    }
+    if(!this.formulario.get('book6').value){
+      this.formulario.controls['book6'].setValue(false);
+    }
+    if(!this.formulario.get('bookA2').value){
+      this.formulario.controls['bookA2'].setValue(false);
+    }
+    if(!this.formulario.get('book7').value){
+      this.formulario.controls['book7'].setValue(false);
+    }
+    if(!this.formulario.get('book8').value){
+      this.formulario.controls['book8'].setValue(false);
+    }
+    if(!this.formulario.get('book9').value){
+      this.formulario.controls['book9'].setValue(false);
+    }
+    if(!this.formulario.get('bookB1').value){
+      this.formulario.controls['bookB1'].setValue(false);
     }
     this.formulario.controls['email'].setValue(email)
     const id = Math.random().toString(36).substring(2);

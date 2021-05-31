@@ -29,7 +29,9 @@ export class AddEstudianteComponent implements OnInit {
       return;
     }
     const id = Math.random().toString(36).substring(2);
-    this.enviarData.guardarDatosPersonales(this.formulario.value, id);
+    this.enviarData.guardarDatosPersonales(this.formulario.value, id).then(resp => {
+      this.formulario.reset();
+    })
   }
 
 }

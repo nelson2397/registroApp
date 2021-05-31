@@ -8,11 +8,11 @@
             <table mat-table [dataSource]="estudiantesTabla" style="width: 100%;">
                 <ng-container matColumnDef="nombre_completo">
                     <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
-                    <td (click)="traerData(estudiante.email, estudiante.nombre, estudiante.apellido, id)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.nombre +' '+ estudiante.apellido}}</td>
+                    <td (click)="traerData(estudiante.email, estudiante.nombre, estudiante.apellido, estudiante.id)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.nombre +' '+ estudiante.apellido}}</td>
                 </ng-container>
                 <ng-container matColumnDef="email">
                     <th mat-header-cell *matHeaderCellDef>Correo Eléctronico</th>
-                    <td (click)="traerData(estudiante.email, estudiante.nombre, estudiante.apellido, id)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.email}}</td>
+                    <td (click)="traerData(estudiante.email, estudiante.nombre, estudiante.apellido, estudiante.id)" style="cursor: pointer;" mat-cell *matCellDef="let estudiante">{{estudiante.email}}</td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="estudiantesColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: estudiantesColumns;"></tr>
@@ -137,7 +137,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="button" (click)="enviarData(books.data, books.nombre, books.apellido)" class="btn btn-primary btn-block mt-3 mb-3">Guardar</button>
+                                    <button type="button" (click)="enviarData(books.data, books.nombre, books.apellido, books.id)" class="btn btn-primary btn-block mt-3 mb-3">Guardar</button>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group text-center">
