@@ -11,9 +11,9 @@ const routes: Routes = [
   {
     path: 'estudiantes', component: MostrarEstudianteComponent
   },
-  {
-    path: 'add-estudiante', component: AddEstudianteComponent
-  },
+  // {
+  //   path: 'add-estudiante', component: AddEstudianteComponent
+  // },
   {
     path: '**', pathMatch: 'full', redirectTo: 'registro'
   }
