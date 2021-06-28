@@ -19,9 +19,9 @@ export class RegistroComponent implements OnInit {
 
   crearFormulario(){
     this.formulario = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(4)]],
-      apellido: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.minLength(5), Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       telefono: ['', [Validators.required, Validators.minLength(6)]],
       book1: [false],
@@ -40,6 +40,9 @@ export class RegistroComponent implements OnInit {
   }
 
   crearUsuario(){
+    if(this.formulario.get('password').value.length < 6){
+      Swal.fire('Contraseña muy corta', 'Necesita por lo mínimo 6 caracteres', 'error');
+    }
     if(this.formulario.invalid){
       Swal.fire('Complete todos los campos', '', 'error');
       return;
@@ -86,7 +89,4 @@ export class RegistroComponent implements OnInit {
     this.validar.crearUsuario(this.formulario.value, id);
     this.formulario.reset();
   }
-
-
-
 }
